@@ -1,0 +1,32 @@
+Source: bbswitch
+Section: kernel
+Priority: optional
+Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
+Uploaders:
+ Aron Xu <aron@debian.org>,
+ Vincent Cheng <vcheng@debian.org>,
+ Yunqiang Su <wzssyqa@gmail.com>,
+ Luca Boccassi <bluca@debian.org>,
+Build-Depends:
+ debhelper-compat (= 13),
+Rules-Requires-Root: no
+Standards-Version: 4.5.0
+Homepage: https://github.com/Bumblebee-Project/bbswitch
+Vcs-Browser: https://salsa.debian.org/nvidia-team/bbswitch
+Vcs-Git: https://salsa.debian.org/nvidia-team/bbswitch.git
+
+Package: bbswitch-modules-_KVERS_
+Architecture: amd64 i386 armhf ppc64el
+Depends:
+ linux-image-_KVERS_,
+Provides:
+ bbswitch-modules,
+Suggests:
+ bumblebee,
+Description: Interface for toggling the power on NVIDIA Optimus video cards
+ bbswitch is a kernel module which automatically detects the required ACPI
+ calls for two kinds of Optimus laptops. It has been verified to work with
+ "real" Optimus and "legacy" Optimus laptops (at least, that is what the
+ author Lekensteyn calls those).
+ .
+ This package contains the compiled Linux kernel modules for _KVERS_

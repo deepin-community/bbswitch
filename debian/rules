@@ -1,0 +1,42 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/dpkg/pkg-info.mk
+
+name = bbswitch
+version	 = $(DEB_VERSION_UPSTREAM)
+
+%:
+	dh $@ --with dkms
+
+build:
+
+override_dh_auto_clean:
+
+override_dh_auto_build:
+
+override_dh_dkms:
+	dh_dkms -p$(name)-dkms -V $(version)
+
+override_dh_auto_install:
+	# bbswitch-dkms
+	dh_installdirs -p$(name)-dkms usr/src/$(name)-$(version)
+	dh_install -p$(name)-dkms Makefile usr/src/$(name)-$(version)
+	dh_install -p$(name)-dkms bbswitch.c usr/src/$(name)-$(version)
+	# bbswitch-source (for use with module-assistant)
+	dh_installdirs -p$(name)-source usr/src/modules/$(name)/debian
+	dh_install -p$(name)-source Makefile usr/src/modules/$(name)
+	dh_install -p$(name)-source bbswitch.c usr/src/modules/$(name)
+	install -D -m 0755 debian/rules.modules debian/$(name)-source/usr/src/modules/$(name)/debian/rules
+	set -ex; for file in changelog control control.modules.in copyright; do \
+		install -m 644 debian/$$file debian/$(name)-source/usr/src/modules/$(name)/debian/; \
+	done
+	find 'debian/$(name)-source/usr/src/modules' -depth -newermt '@$(SOURCE_DATE_EPOCH)' -print0 | \
+		xargs -0r touch --no-dereference --date='@$(SOURCE_DATE_EPOCH)'
+	cd debian/$(name)-source/usr/src && tar cfj $(name).tar.bz2 --owner=root \
+		--group=src --sort=name --mode=go=rX,u+rw,a-s modules && rm -rf modules
+
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS

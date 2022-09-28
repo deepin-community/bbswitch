@@ -1,0 +1,136 @@
+bbswitch (0.8-10) unstable; urgency=medium
+
+  [ Andreas Beckmann ]
+  * Build for arm64, too.
+
+  [ Vincent Cheng ]
+  * Remove myself from Uploaders.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 18 Aug 2020 00:06:37 +0200
+
+bbswitch (0.8-9) unstable; urgency=medium
+
+  * Add proposed upstream patch for Linux 5.6 support.  (Closes: #959189)
+  * Run clean target against the kernel version used for building.
+  * Switch to debhelper-compat (= 13).
+  * Update Standards version to 4.5.0, no changes required.
+  * Declare Testsuite: autopkgtest-pkg-dkms.
+  * Restrict to architectures with the nvidia binary driver. (Closes: #842964)
+  * Add upstream metadata URLs.
+  * Add myself to Uploaders.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 07 May 2020 15:59:02 +0200
+
+bbswitch (0.8-8) unstable; urgency=medium
+
+  * bbswitch-source: make build reproducible by using tar --owner --group.
+
+ -- Luca Boccassi <bluca@debian.org>  Sat, 19 Jan 2019 18:38:35 +0000
+
+bbswitch (0.8-7) unstable; urgency=medium
+
+  * Sync bbswitch-source module control file with bbswitch.
+    Fixes build failure when using module-assistant due to missing
+    debian/compat. (Closes: #918752)
+
+ -- Luca Boccassi <bluca@debian.org>  Thu, 10 Jan 2019 09:22:31 +0000
+
+bbswitch (0.8-6) unstable; urgency=medium
+
+  [ Andreas Beckmann ]
+  * Switch Vcs-* URLs to salsa.debian.org.
+  * Set Rules-Requires-Root: no.
+  * Set Priority to optional.
+  * Use dpkg makefile snippets instead of manual changelog parsing.
+
+  [ Luca Boccassi ]
+  * Switch to debhelper compat level 11.
+  * Bump Standards-Version to 4.3.0.
+  * Switch to my debian.org email address.
+
+ -- Luca Boccassi <bluca@debian.org>  Sat, 05 Jan 2019 17:49:43 +0100
+
+bbswitch (0.8-5) unstable; urgency=medium
+
+  * Add fix-building-against-4.12.patch to fix build on Linux 4.12.
+  * Use https in debian/copyright to be compliant with policy version
+    4.0.0 and bump Standards-Version.
+
+ -- Luca Boccassi <luca.boccassi@gmail.com>  Sun, 16 Jul 2017 23:37:38 +0100
+
+bbswitch (0.8-4) unstable; urgency=medium
+
+  [ Vincent Cheng ]
+  * Make build reproducible by fixing order of files inside tar archive.
+    (Closes: #803547)
+
+  [ Andreas Beckmann ]
+  * Update Standards version to 3.9.8, no changes required.
+  * Update Vcs-* URLs.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 29 May 2016 22:41:26 -0700
+
+bbswitch (0.8-3) unstable; urgency=medium
+
+  * Add myself to Uploaders.
+  * Fix tarball permissions variance due to umask. Makes bbswitch build
+    reproducibly. Thanks Reiner Herrmann for the patch. (Closes: #803547)
+
+ -- Luca Boccassi <luca.boccassi@gmail.com>  Sun, 01 Nov 2015 17:22:03 +0100
+
+bbswitch (0.8-2) unstable; urgency=medium
+
+  [ Andreas Beckmann ]
+  * bbswitch-source: Add Recommends: debhelper.
+  * d/rules.modules: Set KDIR to allow building for a different kernel than the
+    running one.  (Closes: #720682)
+  * bbswitch-source: Use reproducible timestamps inside bbswitch.tar.bz2.
+    (Closes: #778455)
+
+  [ Vincent Cheng ]
+  * Update Standards version to 3.9.6, no changes required.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 25 Jul 2015 20:10:27 -0700
+
+bbswitch (0.8-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Fix FTBFS with linux 3.13.
+  * Mark bbswitch-dkms as Multi-Arch: foreign. (Closes: #728739)
+  * Update debian/copyright to reflect bbswitch license change to GPL-2+.
+  * Update Standards version to 3.9.5, no changes required.
+
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 15 Jan 2014 13:19:21 -0800
+
+bbswitch (0.7-2) unstable; urgency=low
+
+  * Add bbswitch-source package to support module-assistant. (Closes: #715398)
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 11 Jul 2013 01:24:11 -0700
+
+bbswitch (0.7-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 29 May 2013 01:40:23 -0700
+
+bbswitch (0.6-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Fri, 03 May 2013 02:05:40 -0700
+
+bbswitch (0.6-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - Add Vincent and Yunqiang as Uploaders.
+    - Move to linux-any, since it does not support other platforms.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 19 Mar 2013 21:35:43 -0700
+
+bbswitch (0.5-1) unstable; urgency=low
+
+  * Initial release (Closes: #673424)
+
+ -- Aron Xu <aron@debian.org>  Wed, 10 Oct 2012 19:45:33 +0800

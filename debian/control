@@ -1,0 +1,54 @@
+Source: bbswitch
+Section: kernel
+Priority: optional
+Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
+Uploaders:
+ Aron Xu <aron@debian.org>,
+ Yunqiang Su <wzssyqa@gmail.com>,
+ Luca Boccassi <bluca@debian.org>,
+ Andreas Beckmann <anbe@debian.org>,
+Build-Depends:
+ debhelper-compat (= 13),
+ dkms,
+ tar (>= 1.28),
+Rules-Requires-Root: no
+Standards-Version: 4.5.0
+Homepage: https://github.com/Bumblebee-Project/bbswitch
+Vcs-Browser: https://salsa.debian.org/nvidia-team/bbswitch
+Vcs-Git: https://salsa.debian.org/nvidia-team/bbswitch.git
+Testsuite: autopkgtest-pkg-dkms
+
+Package: bbswitch-dkms
+Architecture: amd64 i386 armhf arm64 ppc64el
+Multi-Arch: foreign
+Depends:
+ dkms,
+ ${misc:Depends},
+Suggests:
+ bumblebee,
+Description: Interface for toggling the power on NVIDIA Optimus video cards (dkms)
+ bbswitch is a kernel module which automatically detects the required ACPI
+ calls for two kinds of Optimus laptops. It has been verified to work with
+ "real" Optimus and "legacy" Optimus laptops (at least, that is what the
+ author Lekensteyn calls those).
+ .
+ This package uses DKMS to automatically build the bbswitch kernel module.
+
+Package: bbswitch-source
+Architecture: amd64 i386 armhf arm64 ppc64el
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+Recommends:
+ debhelper-compat (= 13),
+ module-assistant,
+Suggests:
+ bumblebee,
+Description: Interface for toggling the power on NVIDIA Optimus video cards
+ bbswitch is a kernel module which automatically detects the required ACPI
+ calls for two kinds of Optimus laptops. It has been verified to work with
+ "real" Optimus and "legacy" Optimus laptops (at least, that is what the
+ author Lekensteyn calls those).
+ .
+ This package contains source code only, and is intended to be used with
+ module-assistant to build the bbswitch kernel module.
